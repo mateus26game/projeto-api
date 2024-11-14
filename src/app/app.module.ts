@@ -3,10 +3,20 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CabecaComponent } from './rota/header/cabeca.component';
+import { UmComponent } from './tela/DetailsPage/um.component';
+import { DoisComponent } from './tela/homePage/dois.component';
+import { TresComponent } from './tela/ListingPage/tres.component';
+import { FooterComponent } from './rota/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CabecaComponent,
+    UmComponent,
+    DoisComponent,
+    TresComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
