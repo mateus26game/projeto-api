@@ -9,6 +9,9 @@ import { DoisComponent } from './tela/homePage/dois.component';
 import { TresComponent } from './tela/ListingPage/tres.component';
 import { FooterComponent } from './rota/footer/footer.component';
 
+import { HttpClientModule } from '@angular/common/http'; // Importando o HttpClientModule
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import { FooterComponent } from './rota/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
