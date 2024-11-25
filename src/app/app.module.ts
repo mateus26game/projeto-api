@@ -9,7 +9,7 @@ import { DoisComponent } from './tela/homePage/dois.component';
 import { TresComponent } from './tela/ListingPage/tres.component';
 import { FooterComponent } from './rota/footer/footer.component';
 
-import { HttpClientModule } from '@angular/common/http'; // Importando o HttpClientModule
+import { HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http'; // Importando o HttpClientModule
 
 
 @NgModule({
@@ -24,9 +24,11 @@ import { HttpClientModule } from '@angular/common/http'; // Importando o HttpCli
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClient
   ],
   providers: [
+    provideHttpClient(withFetch()),
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
