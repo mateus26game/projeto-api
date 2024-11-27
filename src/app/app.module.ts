@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule,provideClientHydration  } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'; // Módulo de HTTP
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { UmComponent } from './tela/DetailsPage/um.component';
 import { DoisComponent } from './tela/homePage/dois.component';
 import { TresComponent } from './tela/ListingPage/tres.component';
 import { FooterComponent } from './rota/footer/footer.component';
+import { DemonSlayerService } from './demon-slayer.service';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,11 @@ import { FooterComponent } from './rota/footer/footer.component';
     BrowserModule.withServerTransition({ appId: 'serverApp' }), // Adicione o suporte a SSR
     AppRoutingModule,
     HttpClientModule,
+    
   ],
-  providers: [],
+  providers: [
+    provideClientHydration(),
+    DemonSlayerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

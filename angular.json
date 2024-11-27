@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "projeto": {
+    "projetoApi": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,9 +23,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/projeto",
+            "outputPath": "dist/projeto-api",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -39,12 +39,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -74,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "projeto:build:production"
+              "buildTarget": "projetoApi:build:production"
             },
             "development": {
-              "buildTarget": "projeto:build:development"
+              "buildTarget": "projetoApi:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,6 +104,18 @@
     }
   },
   "cli": {
-    "analytics": "6611895c-5ebe-464b-83dd-ba583e332db0"
+    "analytics": "205b067d-e458-4427-b956-941b552ededc"
+  },
+  "projects": {
+  "projetoApi": {
+    "architect": {
+      "serve": {
+        "options": {
+          "proxyConfig": "proxy.conf.json"
+        }
+      }
+    }
   }
+}
+
 }

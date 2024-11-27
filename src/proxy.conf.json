@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://www.demonslayer-api.com/api/v1/characters?",  
+      "secure": false,                  
+      "changeOrigin": true,             
+      "logLevel": "debug"                
+    }
+  }
+  
