@@ -1,35 +1,32 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule,provideClientHydration  } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'; // Módulo de HTTP
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-// Componentes
-import { CabecaComponent } from './rota/header/cabeca.component';
-import { UmComponent } from './tela/DetailsPage/um.component';
-import { DoisComponent } from './tela/homePage/dois.component';
-import { TresComponent } from './tela/ListingPage/tres.component';
-import { FooterComponent } from './rota/footer/footer.component';
-import { DemonSlayerService } from './demon-slayer.service';
+import { HomeComponent } from './Paginas/home/home.component';
+import { ListaComponent } from './Paginas/lista/lista.component';
+import { DetalisComponent } from './Paginas/detalis/detalis.component';
+import { FooterComponent } from './Componetes/footer/footer.component';
+import { NavbarComponent } from './Componetes/navbar/navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CabecaComponent,
-    UmComponent,
-    DoisComponent,
-    TresComponent,
+    HomeComponent,
+    ListaComponent,
+    DetalisComponent,
     FooterComponent,
+    NavbarComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }), // Adicione o suporte a SSR
+    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration(),
-    DemonSlayerService],
-  bootstrap: [AppComponent],
+    provideClientHydration()
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

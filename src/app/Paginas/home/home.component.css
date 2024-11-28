@@ -1,0 +1,14 @@
+/* Estilos adicionais caso precise personalizar algum aspecto com Tailwind */
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pagination button {
+    transition: background-color 0.3s;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
