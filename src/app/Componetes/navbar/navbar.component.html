@@ -1,32 +1,14 @@
-
-
-
-
-<nav class="navbar rounded-box flex w-full gap-2 shadow max-md:flex-col md:items-center bg-[#171a21]">
-  <div class="flex w-full items-center justify-between">
-    <div class="navbar-start items-center justify-between max-md:w-full">
-      <!-- Ícone do Steam colocado antes do logo -->
-      <a href="#" aria-label="Homepage Link" class="flex items-center gap-2">
-        <img src="https://icones.pro/wp-content/uploads/2022/05/icone-steam-vert.png" alt="Steam Icon" class="w-8 h-8" />
-        <span class="text-xl font-semibold text-white">steam verde</span>
-      </a>
-      
-      <!-- Botão de Menu para versão mobile -->
-      <div class="md:hidden">
-        <button type="button" class="collapse-toggle btn btn-outline btn-secondary btn-sm btn-square" data-collapse="#logo-navbar-collapse" aria-controls="logo-navbar-collapse" aria-label="Toggle navigation">
-          <span class="icon-[tabler--menu-2] collapse-open:hidden size-4"></span>
-          <span class="icon-[tabler--x] collapse-open:block hidden size-4"></span>
-        </button>
-      </div>
-    </div>
+<nav class="w-full bg-[#171a21] flex items-center justify-between p-4 shadow-lg m-0 border-0">
+  <!-- Logo e Nome -->
+  <div class="flex items-center gap-3">
+    <img src="https://icones.pro/wp-content/uploads/2022/05/icone-steam-vert.png" alt="Steam Icon" class="w-10 h-10" />
+    <span class="text-2xl font-bold text-white">steam verde</span>
   </div>
 
   <!-- Menu da Navbar -->
-  <div id="logo-navbar-collapse" class="md:navbar-end collapse hidden grow basis-full overflow-hidden transition-[height] duration-300 max-md:w-full">
-    <ul class="menu md:menu-horizontal gap-2 p-0 text-base justify-center text-white">
-      <li><a href="/" class="text-white">Home</a></li>
-      <li><a href="/details" class="text-white">About</a></li>
-      <li><a href="lista" class="text-white">Careers</a></li>
-    </ul>
-  </div>
+  <ul class="flex gap-6 text-lg font-semibold text-white">
+    <li><a href="/" class="hover:text-gray-300 transition-colors">Home</a></li>
+    <li><a href="/details" class="hover:text-gray-300 transition-colors">About</a></li>
+    <li><a href="/lista" class="hover:text-gray-300 transition-colors">Contact</a></li>
+  </ul>
 </nav>

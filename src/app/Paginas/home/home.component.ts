@@ -10,6 +10,26 @@ export class HomeComponent implements OnInit {
 
   games: Game[] = []; // Armazena os jogos para os cards
 
+  activeIndex = 0;
+
+
+
+  slides = [
+    { title: 'First slide', content: 'First slide content' },
+    { title: 'Second slide', content: 'Second slide content' },
+    { title: 'Third slide', content: 'Third slide content' }
+  ];
+
+
+  nextSlide() {
+    this.activeIndex = (this.activeIndex + 1) % this.slides.length;
+  }
+
+  // Função para ir para o slide anterior
+  prevSlide() {
+    this.activeIndex = (this.activeIndex - 1 + this.slides.length) % this.slides.length;
+  }
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
