@@ -28,20 +28,4 @@ export class ApiService {
   getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.baseUrl);
   }
-
-
-  private base1Url = 'https://www.mmobomb.com/api1/filter?tag=2d.pixel';
-  private base2Url = 'https://www.mmobomb.com/api1/filter?tag=zombie.survival';
-  private base3Url = 'https://www.mmobomb.com/api1/filter?tag=mmorpg.mmo';
-  private base4Url = 'https://www.mmobomb.com/api1/filter?tag=anime';
-
-
-
-
-  // Método para pegar os jogos de uma URL específica
-  getGamesByCategory(url: string): Observable<Game[]> {
-    return this.http.get<Game[]>(url);
-  }
-
-  
 }

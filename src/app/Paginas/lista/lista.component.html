@@ -1,32 +1,28 @@
-<!-- Fundo verde para o site inteiro -->
-<div class="">
+<div class="min-h-screen bg-gray-900 text-white">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Últimas Notícias</h1>
 
-  <h1> ultan noticia</h1>
-  <!-- Lista de Itens / Notícias -->
-  <div *ngFor="let item of items" class="news-cards bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-    
-      <!-- Card de Notícia -->
-      <div *ngFor="let item of items" class="news-card  bg-[#171a21]  text-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
-        
-        <!-- Imagem -->
+    <!-- Grid de Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div *ngFor="let item of visibleItems" class="bg-gray-800 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
         <img [src]="item.thumbnail" [alt]="item.title" class="w-full h-48 object-cover rounded-t-lg" />
-        
         <div class="p-4">
-          <!-- Título do Card -->
           <a [href]="item.article_url" target="_blank" class="text-xl font-semibold hover:text-blue-400 transition-colors duration-200">
             {{ item.title }}
           </a>
-          
-          <!-- Descrição curta -->
           <p class="text-sm text-gray-400 mt-2">{{ item.short_description }}</p>
-          
-          <!-- Link "Saiba Mais" -->
-          
         </div>
       </div>
-      
+    </div>
+
+    <!-- Botão "Carregar Mais" -->
+    <div class="text-center mt-8">
+      <button
+        (click)="loadMoreItems()"
+        [disabled]="visibleItems.length >= items.length"
+        class="bg-blue-500 text-white py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+        {{ visibleItems.length >= items.length ? 'Tudo Carregado' : 'Carregar Mais' }}
+      </button>
     </div>
   </div>
-
 </div>
