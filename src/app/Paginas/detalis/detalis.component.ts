@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, Game } from '../../servi/api.service'; // Certifique-se do caminho correto
+import { WishlistService } from '../../servi/wishlist-service.service'; // Novo serviço
 
 @Component({
   selector: 'app-detalis',
@@ -13,7 +14,7 @@ export class DetalisComponent implements OnInit {
   isLoading: boolean = false; // Indicador de carregamento
   errorMessage: string = ''; // Mensagem de erro
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private wishlistService: WishlistService) {}
 
   ngOnInit(): void {
     this.loadGames(); // Carrega os jogos ao inicializar o componente
@@ -44,5 +45,19 @@ export class DetalisComponent implements OnInit {
     this.filteredGames = this.games.filter((game) =>
       game.title.toLowerCase().includes(query)
     );
+  }
+
+  // Adicionar/Remover da Lista de Desejos
+  toggleWishlist(gameId: number): void {
+    if (this.wishlistService.isInWishlist(gameId)) {
+      this.wishlistService.removeFromWishlist(gameId);
+    } else {
+      this.wishlistService.addToWishlist(gameId);
+    }
+  }
+
+  // Verificar se o jogo está na Lista de Desejos
+  isInWishlist(gameId: number): boolean {
+    return this.wishlistService.isInWishlist(gameId);
   }
 }
