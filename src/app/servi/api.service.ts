@@ -20,7 +20,7 @@ export interface Game {
   providedIn: 'root',
 })
 export class ApiService {
-  private baseUrl = 'https://www.mmobomb.com/api1/games?category=MMORPG';
+  private baseUrl = ' https://www.mmobomb.com/api1/games';
 
   constructor(private http: HttpClient) {}
 

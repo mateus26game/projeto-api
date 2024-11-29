@@ -1,1 +1,48 @@
-<p>detalis works!</p>
+<div class="min-h-screen bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-center mb-8">Lista de Jogos</h1>
+  
+      <!-- Campo de Busca -->
+      <div class="mb-6">
+        <input
+          type="text"
+          [(ngModel)]="searchQuery"
+          (input)="filterGames()"
+          placeholder="Buscar por título do jogo..."
+          class="w-full px-4 py-2 rounded-lg shadow-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+  
+      <!-- Indicador de Carregamento -->
+      <div *ngIf="isLoading" class="text-center text-gray-400">
+        Carregando jogos...
+      </div>
+  
+      <!-- Mensagem de Erro -->
+      <div *ngIf="errorMessage && !isLoading" class="text-center text-red-400">
+        {{ errorMessage }}
+      </div>
+  
+      <!-- Grid de Jogos -->
+      <div *ngIf="!isLoading && !errorMessage" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div *ngFor="let game of filteredGames" class="card sm:max-w-sm bg-white rounded-lg shadow-lg">
+          <a [href]="game.game_url" target="_blank" class="block">
+            <figure class="relative group">
+              <img [src]="game.thumbnail" [alt]="game.title" class="w-full h-48 object-cover rounded-t-lg" />
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div class="text-center text-white">
+                  <h2 class="text-xl font-semibold">{{ game.title }}</h2>
+                </div>
+              </div>
+            </figure>
+          </a>
+        </div>
+      </div>
+  
+      <!-- Mensagem caso nenhum jogo seja encontrado -->
+      <div *ngIf="!isLoading && filteredGames.length === 0 && !errorMessage" class="text-center text-gray-400 mt-8">
+        Nenhum jogo encontrado.
+      </div>
+    </div>
+  </div>
+  

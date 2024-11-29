@@ -9,6 +9,7 @@ import { DetalisComponent } from './Paginas/detalis/detalis.component';
 import { FooterComponent } from './Componetes/footer/footer.component';
 import { NavbarComponent } from './Componetes/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()
