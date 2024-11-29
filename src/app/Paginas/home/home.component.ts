@@ -10,24 +10,23 @@ export class HomeComponent implements OnInit {
 
   games: Game[] = []; // Armazena os jogos para os cards
 
-  activeIndex = 0;
+  activeIndex = 0; // Índice do slide ativo
 
-
-
-  slides = [
-    { title: 'First slide', content: 'First slide content' },
-    { title: 'Second slide', content: 'Second slide content' },
-    { title: 'Third slide', content: 'Third slide content' }
+  // URLs das imagens para o carrossel
+  imageUrls: string[] = [
+    'https://cdn1.epicgames.com/offer/0c40923dd1174a768f732a3b013dcff2/EGS_UpgradetoDigitalDeluxeEdition_NaughtyDogLLC_AddOn_S1_2560x1440-d0195796f9b15e41ee69393bb95c4edc',
+    'https://images5.alphacoders.com/917/917971.jpg',
+    'https://cdn1.epicgames.com/offer/fda0f2b4047f46ffb4e94d5595c1468e/EGS_MortalKombat1_NetherRealmStudios_S3_2560x1440-bea2296b499ceecfc1dc1a91ab0d9a36'
   ];
 
-
+  // Função para avançar para o próximo slide
   nextSlide() {
-    this.activeIndex = (this.activeIndex + 1) % this.slides.length;
+    this.activeIndex = (this.activeIndex + 1) % this.imageUrls.length;
   }
 
-  // Função para ir para o slide anterior
+  // Função para voltar para o slide anterior
   prevSlide() {
-    this.activeIndex = (this.activeIndex - 1 + this.slides.length) % this.slides.length;
+    this.activeIndex = (this.activeIndex - 1 + this.imageUrls.length) % this.imageUrls.length;
   }
 
   constructor(private apiService: ApiService) {}
