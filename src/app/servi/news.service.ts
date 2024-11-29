@@ -18,7 +18,7 @@ export interface News {
 })
 export class NewsService {
 
-  private apiUrl = 'https://www.mmobomb.com/api1/latestnews'; // URL da API
+  private apiUrl = 'https://www.mmobomb.com/api1/filter?tag=zombie.survival'; // URL da API
 
   constructor(private http: HttpClient) {}
 
