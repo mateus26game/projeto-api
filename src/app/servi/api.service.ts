@@ -24,7 +24,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para pegar os jogos de uma categoria específica
+  
   getGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.baseUrl);
   }

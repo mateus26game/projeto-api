@@ -16,11 +16,10 @@ export interface News {
   providedIn: 'root',
 })
 export class NewsService {
-  private apiUrl = 'https://www.mmobomb.com/api1/latestnews'; // URL da API
+  private apiUrl = 'https://www.mmobomb.com/api1/latestnews'; 
 
   constructor(private http: HttpClient) {}
 
-  // Pega todas as notícias
   getAllItems(): Observable<News[]> {
     return this.http.get<News[]>(this.apiUrl);
   }

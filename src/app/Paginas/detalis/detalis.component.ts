@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService, Game } from '../../servi/api.service'; // Certifique-se do caminho correto
-import { WishlistService } from '../../servi/wishlist-service.service'; // Novo serviço
+import { ApiService, Game } from '../../servi/api.service';
+import { WishlistService } from '../../servi/wishlist-service.service';
 
 @Component({
   selector: 'app-detalis',
@@ -8,55 +8,68 @@ import { WishlistService } from '../../servi/wishlist-service.service'; // Novo 
   styleUrls: ['./detalis.component.css']
 })
 export class DetalisComponent implements OnInit {
-  games: Game[] = []; // Todos os jogos carregados da API
-  filteredGames: Game[] = []; // Jogos visíveis (após a pesquisa)
-  searchQuery: string = ''; // Termo de busca
-  isLoading: boolean = false; // Indicador de carregamento
-  errorMessage: string = ''; // Mensagem de erro
+  games: Game[] = []; 
+  filteredGames: Game[] = []; 
+  searchQuery: string = ''; 
+  isLoading: boolean = false; 
+  errorMessage: string = ''; 
+  showFavorites: boolean = false; 
 
   constructor(private apiService: ApiService, private wishlistService: WishlistService) {}
 
   ngOnInit(): void {
-    this.loadGames(); // Carrega os jogos ao inicializar o componente
+    this.loadGames();
   }
 
-  // Carrega os jogos da API
+  
   loadGames(): void {
-    this.isLoading = true; // Ativa o indicador de carregamento
-    this.errorMessage = ''; // Reseta mensagens de erro
+    this.isLoading = true;
+    this.errorMessage = '';
 
     this.apiService.getGames().subscribe(
       (data) => {
-        this.games = data; // Salva todos os jogos
-        this.filteredGames = [...this.games]; // Inicialmente, todos são visíveis
-        this.isLoading = false; // Finaliza o carregamento
+        this.games = data; 
+        this.filteredGames = [...this.games]; 
+        this.isLoading = false;
       },
       (error) => {
         console.error('Erro ao carregar jogos:', error);
         this.errorMessage = 'Erro ao carregar jogos. Tente novamente mais tarde.';
-        this.isLoading = false; // Finaliza o carregamento mesmo em erro
+        this.isLoading = false;
       }
     );
   }
 
-  // Filtra os jogos com base no termo de busca
   filterGames(): void {
     const query = this.searchQuery.toLowerCase().trim();
-    this.filteredGames = this.games.filter((game) =>
-      game.title.toLowerCase().includes(query)
-    );
+
+    this.filteredGames = this.games.filter((game) => {
+      const matchesSearch = game.title.toLowerCase().includes(query);
+      const matchesFavorites = this.showFavorites
+        ? this.wishlistService.isInWishlist(game.id)
+        : true;
+
+      return matchesSearch && matchesFavorites;
+    });
   }
 
-  // Adicionar/Remover da Lista de Desejos
+  toggleFavoritesView(): void {
+    this.showFavorites = !this.showFavorites;
+    this.filterGames(); 
+  }
+
   toggleWishlist(gameId: number): void {
     if (this.wishlistService.isInWishlist(gameId)) {
       this.wishlistService.removeFromWishlist(gameId);
     } else {
       this.wishlistService.addToWishlist(gameId);
     }
+
+    if (this.showFavorites) {
+      this.filterGames(); 
+    }
   }
 
-  // Verificar se o jogo está na Lista de Desejos
   isInWishlist(gameId: number): boolean {
     return this.wishlistService.isInWishlist(gameId);
   }
