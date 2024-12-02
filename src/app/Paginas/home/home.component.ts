@@ -9,6 +9,9 @@ import { ApiService, Game } from '../../servi/api.service';
 export class HomeComponent implements OnInit {
 
   games: Game[] = []; 
+  categories: string[] = ['Action', 'Adventure', 'RPG', 'Shooter'];
+  selectedCategory: string = '';
+
 
   activeIndex = 0;
 

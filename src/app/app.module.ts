@@ -10,6 +10,8 @@ import { FooterComponent } from './Componetes/footer/footer.component';
 import { NavbarComponent } from './Componetes/navbar/navbar.component';
 import { HttpClientModule,provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TitleCasePipe } from './pipes/title-case.pipe';
+import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule } from '@angular/forms';
     ListaComponent,
     DetalisComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    TitleCasePipe,
+    FilterCategoryPipe
   ],
   imports: [
     BrowserModule,
